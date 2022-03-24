@@ -9,7 +9,7 @@ data class Person(
     var budget : Double = .99,
     var desiredGift : String = "String",
     var previousGifts : List<String> = listOf(),
-    var previousGiftsToMe : List<String>,
+    var previousGiftsToMe : List<String> = listOf(),
     var giftPurchased : Boolean = false
 )
 
