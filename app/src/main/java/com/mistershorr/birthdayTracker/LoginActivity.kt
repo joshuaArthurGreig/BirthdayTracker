@@ -81,6 +81,7 @@ class LoginActivity : AppCompatActivity() {
                     override fun handleFault(fault: BackendlessFault) {
                         // login failed, to get the error code call fault.getCode()
                         Log.d("loginActivity", "handleFault : ${fault.message}")
+                        Toast.makeText(this@LoginActivity, "Invalid username and/or password", Toast.LENGTH_SHORT).show()
                     }
                 }
             )

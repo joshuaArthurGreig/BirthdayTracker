@@ -10,7 +10,9 @@ data class Person(
     var desiredGift : String = "String",
     var previousGifts : List<String> = listOf(),
     var previousGiftsToMe : List<String> = listOf(),
-    var giftPurchased : Boolean = false
+    var giftPurchased : Boolean = false,
+    var ownerId : String? = null,
+    var objectId : String? = null
 )
 
 //TODO: have methods to return calculated values of age, days until birthday
