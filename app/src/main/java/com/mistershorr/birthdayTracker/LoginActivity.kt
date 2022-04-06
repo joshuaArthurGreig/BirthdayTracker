@@ -85,6 +85,7 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
             )
+            finish()
         }
 
         binding.textViewLoginCreateAccount.setOnClickListener {

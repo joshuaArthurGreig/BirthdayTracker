@@ -24,11 +24,11 @@ class BirthdayListActivity : AppCompatActivity() {
 
     private fun loadDataFromBackendless() {
 
-        Backendless.UserService.CurrentUser()
-        val whereClause = "ownerId = '"
+        val objectId = Backendless.UserService.CurrentUser().objectId
+        val whereClause = "ownerId = '$objectId'"
         val queryBuilder = DataQueryBuilder.create()
         queryBuilder.whereClause = whereClause
-        Backendless.Data.of(Person::class.java).find(object : AsyncCallback<List<Person?>?> {
+        Backendless.Data.of(Person::class.java).find(queryBuilder, object : AsyncCallback<List<Person?>?> {
             override fun handleResponse(foundPeople: List<Person?>?) {
                 Log.d("BirthdayList", "handleResponse : ${foundPeople}")
                 val adapter = BirthdayAdapter((foundPeople ?: listOf<Person>()) as List<Person>)
