@@ -1,5 +1,6 @@
 package com.mistershorr.birthdayTracker
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,7 +39,22 @@ class BirthdayAdapter(var birthdayList: List<Person>) : RecyclerView.Adapter<Bir
         val context = holder.layout.context
         val person = birthdayList[position]
         holder.textViewName.text = person.name
+        var daysDiff = calculateDaysLeft(person)
 
+
+        holder.textViewDaysUntil.text = "$daysDiff left"
+        holder.checkBoxGiftBought.isChecked = person.giftPurchased
+
+        holder.layout.setOnClickListener {
+            val detailIntent = Intent(context, BirthdayDetailActivity::class.java)
+            detailIntent.putExtra(BirthdayDetailActivity.EXTRA_PERSON, person)
+            context.startActivity(detailIntent)
+
+        }
+
+    }
+
+    private fun calculateDaysLeft(person: Person): Long {
         val calendarBday = Calendar.getInstance()
         calendarBday.time = person.birthday
         val calendarToday = Calendar.getInstance()
@@ -60,12 +76,16 @@ class BirthdayAdapter(var birthdayList: List<Person>) : RecyclerView.Adapter<Bir
         }
         var difference = calendarBday.timeInMillis - calendarToday.timeInMillis
         var daysDiff = difference / (1000*60*60*24)
-        holder.textViewDaysUntil.text = "$daysDiff left"
-        holder.checkBoxGiftBought.isChecked = person.giftPurchased
-
+        return daysDiff
     }
 
     override fun getItemCount(): Int {
         return birthdayList.size
     }
+}
+
+
+
+
+
 }

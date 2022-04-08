@@ -20,10 +20,22 @@ class BirthdayDetailActivity : AppCompatActivity() {
     var personIsEditable = false
     var cal = Calendar.getInstance()
 
+    companion object {
+        val EXTRA_PERSON = "person"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBirthdayDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val person = intent.getParcelableExtra<Person>(EXTRA_PERSON)
+        binding.editTextBirthdayDetailName.setText(person?.name)
+        binding.editTextBirthdayDetailDesiredGift.setText(person?.desiredGift)
+        binding.editTextBirthdayDetailBudget.setText(person?.budget.toString())
+        binding.checkBoxBirthdayDetailGiftBought.isChecked = person?.giftPurchased ?: false
+
+
 
         // datepicker code from https://www.tutorialkart.com/kotlin-android/android-datepicker-kotlin-example/
         val dateSetListener = object : DatePickerDialog.OnDateSetListener {
