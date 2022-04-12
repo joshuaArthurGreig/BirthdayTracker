@@ -88,4 +88,4 @@ class BirthdayAdapter(var birthdayList: List<Person>) : RecyclerView.Adapter<Bir
 
 
 
-}
+

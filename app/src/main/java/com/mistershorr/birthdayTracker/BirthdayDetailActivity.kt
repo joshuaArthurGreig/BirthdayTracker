@@ -100,11 +100,11 @@ class BirthdayDetailActivity : AppCompatActivity() {
             binding.buttonBirthdayDetailSave.visibility = View.VISIBLE
             binding.checkBoxBirthdayDetailGiftBought.isEnabled = true
             binding.editTextBirthdayDetailName.inputType = InputType.TYPE_TEXT_VARIATION_PERSON_NAME
-            binding.editTextBirthdayDetailName.isEnabled = false
+            binding.editTextBirthdayDetailName.isEnabled = true
             binding.editTextBirthdayDetailDesiredGift.inputType = InputType.TYPE_TEXT_VARIATION_PERSON_NAME
-            binding.editTextBirthdayDetailDesiredGift.isEnabled = false
+            binding.editTextBirthdayDetailDesiredGift.isEnabled = true
             binding.editTextBirthdayDetailBudget.inputType = InputType.TYPE_NUMBER_VARIATION_NORMAL
-            binding.editTextBirthdayDetailBudget.isEnabled = false
+            binding.editTextBirthdayDetailBudget.isEnabled = true
             binding.textViewBirthdayDetailBirthdate.isClickable = true
         }
     }
